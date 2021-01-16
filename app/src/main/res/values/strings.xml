@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Life Assurance Premiums</string>
+    <string name="logo_name">Life Assurance Premiums</string>
+    <string name="slogan_name"> A few pennies today could save your life tomorrow</string>
+    <string name="powered_by">Powered by Ellen Chihwanda</string>
+    <string name="image_description">Logo image</string>
+
+    <!--    Strings for onBoarding Screen -->
+    <!--Titles-->
+    <string name="first_slide_title">Pay Your Premiums</string>
+    <string name="second_slide_title">Check Policy Status</string>
+    <string name="third_slide_title">Make Claims</string>
+    <string name="fourth_slide_title">Notifications and Reports</string>
+    <!--Descriptions-->
+    <string name="first_slide_desc">Make your premium payments using all the payment methods platform  </string>
+    <string name="second_slide_desc">We provide you with accurate policy status/position and policy values for surrender or part withdrawal.</string>
+    <string name="third_slide_desc">Intimate claims, upload supporting documents and trace the status of claims</string>
+    <string name="fourth_slide_desc">Make Notifications of contact details changes and produce reports of premium payment history </string>
+
+    <!--Buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Lets Get Started</string>
+</resources>
