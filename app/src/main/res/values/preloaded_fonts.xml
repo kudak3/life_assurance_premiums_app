@@ -4,5 +4,6 @@
         <item>@font/muli</item>
         <item>@font/muli_black</item>
         <item>@font/muli_light</item>
+        <item>@font/muli_semibold</item>
     </array>
 </resources>

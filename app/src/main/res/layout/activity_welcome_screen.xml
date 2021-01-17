@@ -9,6 +9,9 @@
 
     tools:context=".WelcomeScreen">
 
+<!--    TODO-->
+<!--    change logo-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,26 +27,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:fontFamily="@font/muli_black"
             android:text="@string/app_name"
+            android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/purple_700"
-            android:textSize="36sp"
-            android:layout_gravity="center"
-            android:textAlignment="center"/>
+            android:textSize="36sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:layout_gravity="center"
-            android:fontFamily="@font/muli"
             android:layout_marginTop="30dp"
-            android:textSize="20sp"
+            android:fontFamily="@font/muli"
             android:text="@string/slogan_name"
             android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,13 +66,13 @@
                 tools:ignore="Suspicious0dp" />
 
             <Button
-
+                android:id="@+id/start_sign_up_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@color/purple_700"
-                android:onClick="letTheUserLoggedIn"
+                android:onClick="callSignUpScreen"
                 android:text="@string/sign_up"
                 android:textColor="@color/white"
                 tools:ignore="OnClick,Suspicious0dp" />
@@ -83,7 +86,7 @@
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:background="#00000000"
-            android:onClick="letTheUserLoggedIn"
+            android:onClick="callSignUpScreen"
             android:text="@string/how_we_work"
             android:textColor="@color/purple_700"
             tools:ignore="OnClick,Suspicious0dp" />
