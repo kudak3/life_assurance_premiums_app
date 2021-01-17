@@ -47,6 +47,8 @@
             android:layout_height="wrap_content"
             android:background="@color/purple_700"
             android:text="@string/let_get_started"
+            android:onClick="skip"
+            android:textColor="@color/white"
             android:visibility="invisible" />
 
         <LinearLayout
@@ -68,6 +70,7 @@
             android:drawableRight="@drawable/next_btn"
             android:onClick="next"
             android:paddingBottom="30dp"
+
             tools:ignore="OnClick" />
     </RelativeLayout>
 

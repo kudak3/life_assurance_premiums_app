@@ -59,7 +59,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view) {
-        startActivity(new Intent(this, TempScreen.class));
+        startActivity(new Intent(this, WelcomeScreen.class));
         finish();
     }
 

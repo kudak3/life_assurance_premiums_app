@@ -51,7 +51,8 @@
         android:padding="10dp"
         android:text="@string/first_slide_desc"
         android:textSize="16sp"
-        android:textColor="@color/black"
+
+        android:fontFamily="@font/brandon_grotesque_black"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
