@@ -1,7 +1,12 @@
 package com.ellachihwanda.lifeassurancepremiums;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
+import android.view.View;
 import android.view.WindowManager;
 
 public class Login extends AppCompatActivity {
@@ -13,4 +18,12 @@ public class Login extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
     }
+
+    public void callDashBoard(View view){
+
+        Intent intent = new Intent(getApplicationContext(), DashBoard.class);
+            startActivity(intent);
+        }
+
+
 }

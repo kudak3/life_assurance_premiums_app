@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeAssurancePremiums">
-        <activity android:name=".SignUp3rdClass"></activity>
+        <activity android:name=".DashBoard"></activity>
+        <activity android:name=".SignUp3rdClass" />
         <activity android:name=".SignUp2ndClass" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
