@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
         <item>@font/baloo</item>
+        <item>@font/bungee</item>
         <item>@font/muli</item>
         <item>@font/muli_black</item>
         <item>@font/muli_light</item>

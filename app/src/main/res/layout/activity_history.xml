@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashBoard">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:id="@+id/account_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+
+
+            android:layout_marginTop="30dp"
+
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/lap_logo" />
+
+        <TextView
+            android:id="@+id/hello_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="44dp"
+            android:textColor="@color/design_default_color_primary"
+            android:text="Good Evening , "
+            android:textSize="18sp"
+            app:fontFamily="@font/baloo"
+            app:layout_constraintStart_toEndOf="@id/account_icon"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+            />
+
+        <TextView
+            android:id="@+id/greetings_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/baloo"
+
+            android:textSize="22sp"
+
+            android:text="Ella Chihwada"
+            app:layout_constraintStart_toEndOf="@id/account_icon"
+            app:layout_constraintTop_toBottomOf="@+id/hello_text"
+            />
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="280dp"
+            android:orientation="horizontal"
+
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greetings_name">
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/cardview_shadow_start_color"
+                  android:layout_weight="1"
+                app:cardElevation="5dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@color/purple_500"
+
+                    android:layout_height="match_parent">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/transaction_heading"
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintStart_toEndOf="parent">
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                               android:gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:text="Payment Details"
+                                android:textSize="24sp"
+                                app:fontFamily="@font/aclonica"
+                              />
+                        </LinearLayout>
+
+
+
+                        <TextView
+                            android:id="@+id/policy_number_t"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="10dp"
+                            android:includeFontPadding="false"
+
+
+                            android:text="XXX XXX XXX XXXX"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="20sp"
+                            app:fontFamily="@font/baloo"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/transaction_heading"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/policy_number_t_lbl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="26dp"
+                            android:layout_marginLeft="26dp"
+                            android:fontFamily="@font/brandon_grotesque_regular_italic"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="16sp"
+
+
+                            android:text="Policy No."
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/policy_number_t"/>
+
+                        <TextView
+                            android:id="@+id/amount_paid_t"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="15dp"
+
+                            android:text="$1 200 000"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="23sp"
+                            app:fontFamily="@font/ds_digital_bold"
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/transaction_heading"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/amount_paid_t_lbl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/brandon_grotesque_regular_italic"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="16sp"
+
+
+                            android:text="Amount Paid."
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/amount_paid_t"/>
+
+
+
+
+
+                        <TextView
+                            android:id="@+id/payment_method_t"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="10dp"
+
+                            android:text="ECOCASH"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="18sp"
+                            app:fontFamily="@font/baloo"
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/amount_paid_t_lbl"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/payment_method_t_lbl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/brandon_grotesque_regular_italic"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="16sp"
+
+
+                            android:text="Method."
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/payment_method_t"/>
+
+
+
+
+
+                        <TextView
+                            android:id="@+id/paying_account"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                           android:layout_marginTop="5dp"
+                            android:text="XXX XXX XXX XXXX"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="20sp"
+                            app:fontFamily="@font/baloo"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/policy_number_t_lbl"
+
+                            />
+                        <TextView
+                            android:id="@+id/paying_account_lbl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="26dp"
+                            android:layout_marginLeft="26dp"
+
+                            android:fontFamily="@font/brandon_grotesque_regular_italic"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="16sp"
+
+
+                            android:text="Account No."
+                            app:layout_constraintStart_toStartOf="parent"
+
+                            app:layout_constraintTop_toBottomOf="@id/paying_account"/>
+                        <TextView
+                            android:id="@+id/processed_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="26dp"
+                            android:layout_marginEnd="26dp"
+
+                            android:text="12/01/2020"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="30sp"
+                            app:fontFamily="@font/ds_digital_bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/paid_date_lbl"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/paid_date_lbl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="26dp"
+                            android:layout_marginRight="26dp"
+                            android:fontFamily="@font/brandon_grotesque_regular_italic"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="16sp"
+
+
+                            android:text="DATE PROCESSED"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/paid_by_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="26dp"
+                            android:layout_marginStart="26dp"
+
+                            android:text="E.Chihwanda"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="20sp"
+                            app:fontFamily="@font/brandon_grotesque_regular_italic"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/paid_by_lbl"
+
+
+                            />
+                        <TextView
+                            android:id="@+id/paid_by_lbl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="26dp"
+                            android:layout_marginLeft="26dp"
+                            android:fontFamily="@font/brandon_grotesque_regular_italic"
+                            android:textColor="@color/lightWhite"
+                            android:textSize="16sp"
+
+
+                            android:text="PAID BY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/label_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_marginLeft="20dp"
+
+            android:layout_marginTop="10dp"
+            android:text="Transaction Histories"
+
+            android:textSize="24sp"
+            app:fontFamily="@font/aclonica"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transaction_history_rvw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/label_heading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

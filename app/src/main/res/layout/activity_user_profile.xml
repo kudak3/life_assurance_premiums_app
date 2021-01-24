@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfile"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/design_default_color_primary"
+        android:padding="20dp">
+
+<ImageView
+    android:id="@+id/profile_image"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_marginTop="20dp"
+    android:src="@drawable/lap_logo" />
+
+        <TextView
+            android:id="@+id/fullname_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/profile_image"
+            android:fontFamily="@font/bungee"
+            android:includeFontPadding="false"
+            android:text="Ella Chihwanda"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/username_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullname_field"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/profile_image"
+            android:includeFontPadding="false"
+            android:text="XXXXXXXX XXXX XX"
+            android:textColor="@color/lightWhite"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-100dp"
+        android:layout_width="match_parent"
+        android:paddingTop="20dp"
+        android:paddingHorizontal="20dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="125dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            app:cardBackgroundColor="@color/design_default_color_primary"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/pay_premium" />
+
+                <TextView
+                    android:fontFamily="@font/bungee"
+                    android:id="@+id/payment_label"
+                    android:includeFontPadding="false"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="$123"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/payment_desc"
+                    android:includeFontPadding="false"
+                    android:layout_below="@id/payment_label"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Balance"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="125dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            app:cardBackgroundColor="@color/design_default_color_primary"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/pay_premium" />
+
+                <TextView
+                    android:fontFamily="@font/bungee"
+                    android:id="@+id/payment_label"
+                    android:includeFontPadding="false"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="$123"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/payment_desc"
+                    android:includeFontPadding="false"
+                    android:layout_below="@id/payment_label"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Balance"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Full Name"
+            android:id="@+id/full_name_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/username_icon"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Home Address"
+            android:id="@+id/home_address_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/username_icon"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Email Address"
+            android:id="@+id/email_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/email_icon"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="+263 774 XXX XXX"
+            android:id="@+id/phone_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/phone_number_icon"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="XXX XXX XXX"
+            android:id="@+id/password_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:background="@color/design_default_color_primary"
+            android:fontFamily="@font/bungee"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:text="UPDATE" />
+    </LinearLayout>
+    </LinearLayout>
