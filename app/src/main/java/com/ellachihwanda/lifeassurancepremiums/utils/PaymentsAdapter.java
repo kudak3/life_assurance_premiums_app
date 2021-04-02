@@ -1,4 +1,4 @@
-package com.ellachihwanda.lifeassurancepremiums;
+package com.ellachihwanda.lifeassurancepremiums.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,19 +9,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.zip.Inflater;
+import com.ellachihwanda.lifeassurancepremiums.R;
+import com.ellachihwanda.lifeassurancepremiums.model.Payment;
 
-public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapter.ViewHolder> {
+import java.util.List;
+
+public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.ViewHolder> {
 
     //variables to hold our data
-    String[] data1,data2,data3;
+
+    List<Payment> payments;
     Context context;
 
-    public TransactionsAdapter(Context context, String[] s1,String[] s2,String[] s3){
 
-        data1 = s1;
-        data2 = s2;
-        data3 = s3;
+    public PaymentsAdapter(Context context, List<Payment> payments){
+        this.payments = payments;
         this.context = context;
     }
 
@@ -36,25 +38,26 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvLeading.setText(data1[position]);
-        holder.tvDetails.setText(data2[position]);
-        holder.tvAmount.setText(data3[position]);
+        Payment payment = payments.get(0);
+        holder.tvLeading.setText(payment.getDescription());
+        holder.tvDate.setText(payment.getDate().toString());
+        holder.tvAmount.setText(payment.getAmount().toString());
 
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return payments.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvLeading,tvDetails,tvAmount;
+        TextView tvLeading,tvDate,tvAmount;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvLeading = itemView.findViewById(R.id.tvLeading);
-            tvDetails = itemView.findViewById(R.id.tvDetails);
+            tvDate = itemView.findViewById(R.id.tvDate);
             tvAmount = itemView.findViewById(R.id.tvAmount);
         }
     }

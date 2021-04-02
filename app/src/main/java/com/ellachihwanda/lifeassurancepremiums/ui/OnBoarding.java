@@ -1,4 +1,4 @@
-package com.ellachihwanda.lifeassurancepremiums;
+package com.ellachihwanda.lifeassurancepremiums.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ellachihwanda.lifeassurancepremiums.R;
 import com.ellachihwanda.lifeassurancepremiums.utils.SliderAdapter;
 
 import static com.ellachihwanda.lifeassurancepremiums.utils.SliderAdapter.headings;

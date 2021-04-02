@@ -20,20 +20,25 @@
     <!--Buttons-->
     <string name="skip_btn">Skip</string>
     <string name="next_btn">Next</string>
+     <string name="submit">Submit</string>
     <string name="let_get_started">Lets Get Started</string>
 
 
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
-    <string name="create_account">Create an Account</string>
+    <string name="create_account">Create Account</string>
     <string name="how_we_work">How we work?</string>
     <string name="remember_me">Remember Me</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="enter_password">Enter Password</string>
     <string name="enter_username">Enter Username</string>
-    <string name="enter_full_name">Full Name</string>
+    <string name="enter_first_name">First Name</string>
     <string name="enter_email">Email Address</string>
     <string name="enter_phone">Phone Number</string>
+    <string name="id_number">ID Number</string>
     <string name="policy_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,.</string>
+    <string name="last_name">Last Name</string>
+    <string name="join"><u>Join</u></string>
+    <string name="pay">Pay</string>
 
 </resources>

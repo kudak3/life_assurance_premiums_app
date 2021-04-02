@@ -14,6 +14,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ellachihwanda.lifeassurancepremiums.ui.OnBoarding;
+
 public class SplashScreen extends AppCompatActivity {
 
     private int SPLASH_TIMER = 5000;

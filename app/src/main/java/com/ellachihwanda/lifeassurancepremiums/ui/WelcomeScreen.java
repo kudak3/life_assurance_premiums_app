@@ -1,4 +1,4 @@
-package com.ellachihwanda.lifeassurancepremiums;
+package com.ellachihwanda.lifeassurancepremiums.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+
+import com.ellachihwanda.lifeassurancepremiums.R;
+import com.ellachihwanda.lifeassurancepremiums.ui.auth.Login;
+import com.ellachihwanda.lifeassurancepremiums.ui.auth.SignUp;
 
 public class WelcomeScreen extends AppCompatActivity {
 

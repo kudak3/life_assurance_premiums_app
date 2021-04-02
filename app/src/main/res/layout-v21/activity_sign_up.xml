@@ -30,7 +30,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="50dp">
 
 
             <TextView
@@ -61,8 +61,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:transitionName="transition_slide_text"
-                android:layout_alignParentEnd="true" />
+                android:transitionName="transition_slide_text" />
 
 
             </RelativeLayout>
@@ -71,7 +70,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="60dp"
                 android:orientation="vertical">
 
 
@@ -110,7 +109,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
-                        android:layout_marginTop="10dp"
                         android:textColorHint="@color/black"
                         app:boxStrokeColor="@color/black"
                         app:boxStrokeWidthFocused="2dp"
@@ -141,7 +139,6 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/enter_email"
                             android:textColorHint="@color/black"
-                            android:layout_marginTop="10dp"
                             app:boxStrokeColor="@color/black"
                             app:boxStrokeWidthFocused="2dp"
                             app:endIconMode="clear_text"
@@ -168,7 +165,6 @@
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
                                 android:hint="Password"
                                 android:textColorHint="@color/black"
                                 app:boxStrokeColor="@color/black"

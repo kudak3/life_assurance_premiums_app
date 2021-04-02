@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+
+        android:layout_weight="1"
+        android:elevation="5dp"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+
+
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/p_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/policy_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                     android:id="@+id/tvCoverageName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/baloo"
+
+                    android:gravity="center_horizontal"
+                    android:text="Policy name "
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/btnPayPolicy"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:background="#DCDCDC"
+
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/baloo"
+                     android:textColor="@color/purple_500"
+
+                    android:gravity="center_horizontal"
+                    android:text="@string/pay"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/policy_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@id/p_name">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+
+
+                        android:textAlignment="center">
+
+                        <TextView
+                             android:id="@+id/tvCLabelPremium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/brandon_grotesque_black"
+                            android:text="Premium"
+                            android:textSize="15sp" />
+
+                        <TextView
+
+                            android:id="@+id/tvCPremium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvCLabelPremium"
+
+                            android:fontFamily="@font/ds_digital_bold"
+
+
+                            android:text="$1 200 000"
+                            android:textColor="@color/purple_500"
+                            android:textSize="20sp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:textAlignment="center">
+
+                        <TextView
+                             android:id="@+id/tvCLabelCoverageAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/brandon_grotesque_black"
+                            android:text="Coverage Amount"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tvCCoverageAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvCLabelCoverageAmount"
+
+                            android:fontFamily="@font/ds_digital_bold"
+
+                            android:text="$1 200 000"
+                            android:textColor="@color/purple_500"
+                            android:textSize="20sp" />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center">
+
+                    <TextView
+
+                        android:id="@+id/tvCLabelDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#DCDCDC"
+                        android:fontFamily="@font/brandon_grotesque_black"
+                        android:text="Description"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toTopOf="@id/tvCPolicyDescription"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+
+                         android:id="@+id/tvCPolicyDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvCLabelDescription"
+
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/brandon_grotesque_bold_italic"
+
+                        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperi"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCLabelDescription" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

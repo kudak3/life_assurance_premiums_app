@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile"
+    tools:context=".ui.UserProfile"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -34,7 +34,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/username_field"
+            android:id="@+id/memberId_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/fullname_field"
@@ -74,7 +74,7 @@
 
                 <TextView
                     android:fontFamily="@font/bungee"
-                    android:id="@+id/payment_label"
+                    android:id="@+id/active_policies_label"
                     android:includeFontPadding="false"
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content"
@@ -85,11 +85,11 @@
                 <TextView
                     android:id="@+id/payment_desc"
                     android:includeFontPadding="false"
-                    android:layout_below="@id/payment_label"
+                    android:layout_below="@id/active_policies_label"
                     android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Balance"
+                    android:text="Active Policies"
                     android:textSize="20sp" />
 
             </RelativeLayout>
@@ -117,7 +117,7 @@
 
                 <TextView
                     android:fontFamily="@font/bungee"
-                    android:id="@+id/payment_label"
+                    android:id="@+id/claims_count"
                     android:includeFontPadding="false"
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content"
@@ -126,13 +126,13 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/payment_desc"
+                    android:id="@+id/claims_count_label"
                     android:includeFontPadding="false"
-                    android:layout_below="@id/payment_label"
+                    android:layout_below="@id/claims_count"
                     android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Balance"
+                    android:text="Claims"
                     android:textSize="20sp" />
 
             </RelativeLayout>
@@ -219,11 +219,13 @@
 
 
         <Button
+            android:id="@+id/btnUpdate"
             android:background="@color/design_default_color_primary"
             android:fontFamily="@font/bungee"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:textColor="#fff"
+            android:onClick="update"
             android:layout_width="match_parent"
             android:text="UPDATE" />
     </LinearLayout>

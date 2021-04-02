@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashBoard">
+    tools:context=".ui.DashBoard">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
-            android:text="XXX XXX XXX XXXX"
+            android:text=""
             android:textColor="@color/lightWhite"
             android:textSize="24sp"
             app:fontFamily="@font/baloo"
@@ -115,7 +115,7 @@
             android:layout_marginStart="26dp"
             android:layout_marginLeft="26dp"
             android:layout_marginTop="20dp"
-            android:text="$1,200"
+            android:text=""
             android:textColor="@color/lightWhite"
             android:textSize="30sp"
             app:fontFamily="@font/ds_digital_bold"
@@ -147,7 +147,7 @@
             android:layout_marginRight="26dp"
             android:layout_marginEnd="26dp"
             android:layout_marginTop="20dp"
-            android:text="12/01/2020"
+            android:text=""
             android:textColor="@color/lightWhite"
             android:textSize="30sp"
             app:fontFamily="@font/ds_digital_bold"
@@ -186,6 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:onClick="showPolicies"
                 android:layout_weight="1">
                 <RelativeLayout
                     android:layout_width="match_parent"
