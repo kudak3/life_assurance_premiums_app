@@ -1,12 +1,13 @@
 package com.ellachihwanda.lifeassurancepremiums.utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,13 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ellachihwanda.lifeassurancepremiums.R;
 import com.ellachihwanda.lifeassurancepremiums.controller.ApiClient;
-import com.ellachihwanda.lifeassurancepremiums.model.CoverDto;
+import com.ellachihwanda.lifeassurancepremiums.model.dto.CoverDto;
 import com.ellachihwanda.lifeassurancepremiums.model.Policy;
 import com.ellachihwanda.lifeassurancepremiums.model.PolicyCoverage;
 import com.ellachihwanda.lifeassurancepremiums.service.PolicyService;
-import com.ellachihwanda.lifeassurancepremiums.ui.DashBoard;
 import com.ellachihwanda.lifeassurancepremiums.ui.PoliciesScreen;
+import com.google.gson.Gson;
 
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,6 +36,8 @@ import static com.ellachihwanda.lifeassurancepremiums.ui.PoliciesScreen.showDial
 public class PoliciesAdapter extends RecyclerView.Adapter<PoliciesAdapter.ViewHolder> {
     List<Policy> policies;
     Context context;
+    public static final String MyPREFERENCES = "MyPrefs";
+    SharedPreferences sharedPreferences;
 
 
     public PoliciesAdapter(Context context, List<Policy> policies) {
@@ -71,8 +75,15 @@ public class PoliciesAdapter extends RecyclerView.Adapter<PoliciesAdapter.ViewHo
                     if (response.isSuccessful()) {
                         Toast.makeText(context, "Successfully joined the policy", Toast.LENGTH_LONG).show();
 
+                        sharedPreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        Gson gson = new Gson();
+                        editor.putString("coverList", gson.toJson(Arrays.asList(response.body())));
+                        editor.apply();
+
                         Intent intent = new Intent(context, PoliciesScreen.class);
-                        intent.putExtra("client", response.body().getClient());
+                        ((Activity) context).finish();
+                        context.startActivity(((Activity) context).getIntent());
                         context.startActivity(intent);
                     } else {
                         Toast.makeText(context, "Failed to join the policy: " + response.code(), Toast.LENGTH_LONG).show();

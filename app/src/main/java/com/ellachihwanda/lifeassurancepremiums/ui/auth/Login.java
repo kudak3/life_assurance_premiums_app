@@ -1,9 +1,12 @@
 package com.ellachihwanda.lifeassurancepremiums.ui.auth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,16 +20,24 @@ import com.ellachihwanda.lifeassurancepremiums.controller.ApiClient;
 import com.ellachihwanda.lifeassurancepremiums.model.User;
 import com.ellachihwanda.lifeassurancepremiums.service.UserService;
 import com.ellachihwanda.lifeassurancepremiums.ui.DashBoard;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.ellachihwanda.lifeassurancepremiums.ui.DashBoard.MyPREFERENCES;
 
 public class Login extends AppCompatActivity {
 
     EditText _usernameText, _passwordText;
     Button _loginButton;
     public ProgressDialog progressDialog;
+    SharedPreferences sharedpreferences;
+    String token;
 
 
     @Override
@@ -36,6 +47,8 @@ public class Login extends AppCompatActivity {
         progressDialog = new ProgressDialog(this, ProgressDialog.THEME_HOLO_LIGHT);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        getFirebaseToken();
 
         setContentView(R.layout.activity_login);
         _usernameText = findViewById(R.id.login_username);
@@ -60,29 +73,33 @@ public class Login extends AppCompatActivity {
         String username = _usernameText.getText().toString();
         String password = _passwordText.getText().toString();
 
+
         // TODO: Implement your own authentication logic here.
         UserService loginService =
                 ApiClient.createService(UserService.class);
-        Call<User> call = loginService.basicLogin(username, password);
+        Call<User> call = loginService.basicLogin(username, password, token);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
 
                 if (response.isSuccessful()) {
-                    // user object available
-
+                    User user = response.body();
                     Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_LONG).show();
+
+                    // user object available
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    Gson gson = new Gson();
+                    editor.putString("user", gson.toJson(user));
+                    editor.apply();
                     Intent intent = new Intent(getApplicationContext(), DashBoard.class);
-                    System.out.println("================ddddddd==");
-                    System.out.println(response.body());
-                     intent.putExtra("user",response.body());
                     startActivity(intent);
+                    finish();
 
                 } else {
                     // error response, no access to resource?
 
                     String message;
-                    switch (response.code()){
+                    switch (response.code()) {
                         case 404:
 
                             message = "Not found";
@@ -94,7 +111,7 @@ public class Login extends AppCompatActivity {
                             message = "Login Failed Please contact Admin!!";
                     }
 
-                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 }
                 hideDialog();
 
@@ -104,7 +121,7 @@ public class Login extends AppCompatActivity {
             public void onFailure(Call<User> call, Throwable t) {
                 // something went completely south (like no internet connection)
                 Log.d("Error", t.getMessage());
-                  Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
 
 
                 hideDialog();
@@ -137,6 +154,25 @@ public class Login extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    private void getFirebaseToken() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TOKEN", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        token = task.getResult();
+
+                    }
+                });
+
+
     }
 
     private void showDialog() {

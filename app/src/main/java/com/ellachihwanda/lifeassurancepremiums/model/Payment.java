@@ -1,9 +1,6 @@
 package com.ellachihwanda.lifeassurancepremiums.model;
 
-import com.ellachihwanda.lifeassurancepremiums.model.enums.PaymentType;
-
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Payment implements Serializable {
@@ -15,6 +12,17 @@ public class Payment implements Serializable {
     private Long amount;
     private String description;
     private Date date;
+
+    public Payment() {
+    }
+
+    public Payment(Client client, String accountNumber, PaymentType paymentType, Long amount) {
+        this.client = client;
+        this.accountNumber = accountNumber;
+        this.paymentType = paymentType;
+        this.amount = amount;
+
+    }
 
     public Long getId() {
         return id;

@@ -16,6 +16,7 @@ import com.ellachihwanda.lifeassurancepremiums.model.Policy;
 import com.ellachihwanda.lifeassurancepremiums.model.PolicyCoverage;
 import com.ellachihwanda.lifeassurancepremiums.ui.PayPremium;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CoverageAdapter extends RecyclerView.Adapter<CoverageAdapter.ViewHolder> {
@@ -23,7 +24,6 @@ public class CoverageAdapter extends RecyclerView.Adapter<CoverageAdapter.ViewHo
     Context context;
 
     public CoverageAdapter(Context context, List<PolicyCoverage> coverageList) {
-        System.out.println("++++ " + coverageList);
         this.coverageList = coverageList;
         this.context = context;
     }
@@ -39,7 +39,9 @@ public class CoverageAdapter extends RecyclerView.Adapter<CoverageAdapter.ViewHo
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CoverageAdapter.ViewHolder holder, int position) {
-        PolicyCoverage coverage = coverageList.get(0);
+        System.out.println("==========list");
+        System.out.println(coverageList.get(0));
+        PolicyCoverage coverage = coverageList.get(position);
         holder.tvName.setText(coverage.getPolicy().getName());
         holder.tvPremium.setText('$' + coverage.getPolicy().getPremium().toString());
         holder.tvCoverAmount.setText('$' + coverage.getPolicy().getCoverageAmount().toString());

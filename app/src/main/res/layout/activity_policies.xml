@@ -1,115 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".ui.PoliciesScreen">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <ImageView
-            android:id="@+id/account_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-            android:layout_marginTop="30dp"
+            <ImageView
+                android:id="@+id/account_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
 
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/lap_logo" />
-
-        <TextView
-            android:id="@+id/hello_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="44dp"
-            android:text="Good Evening , "
-            android:textColor="@color/design_default_color_primary"
-            android:textSize="18sp"
-            app:fontFamily="@font/baloo"
-            app:layout_constraintStart_toEndOf="@id/account_icon"
-            app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="30dp"
 
 
-            />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/lap_logo" />
 
-        <TextView
-            android:id="@+id/greetings_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="@font/baloo"
+            <TextView
+                android:id="@+id/hello_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="44dp"
+                android:text="Good Evening , "
+                android:textColor="@color/design_default_color_primary"
+                android:textSize="18sp"
+                app:fontFamily="@font/baloo"
+                app:layout_constraintStart_toEndOf="@id/account_icon"
+                app:layout_constraintTop_toTopOf="parent"
 
-            android:text=""
 
-            android:textSize="22sp"
-            app:layout_constraintStart_toEndOf="@id/account_icon"
-            app:layout_constraintTop_toBottomOf="@+id/hello_text" />
+                />
+
+            <TextView
+                android:id="@+id/greetings_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/baloo"
+
+                android:text=""
+
+                android:textSize="22sp"
+                app:layout_constraintStart_toEndOf="@id/account_icon"
+                app:layout_constraintTop_toBottomOf="@+id/hello_text" />
 
 
-        <TextView
-            android:id="@+id/label_heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            <TextView
+                android:id="@+id/label_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
 
-            android:layout_marginTop="10dp"
-            android:text="My Policies"
+                android:layout_marginTop="10dp"
+                android:text="My Policies"
 
-            android:textSize="24sp"
-            app:fontFamily="@font/aclonica"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/greetings_name"
+
+                android:textSize="24sp"
+                app:fontFamily="@font/aclonica"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/greetings_name"
+
+                />
+
+            <TextView
+                android:id="@+id/no_policy_covers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="20sp"
+                android:layout_marginTop="40dp"
+                android:text="No policy covers available"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_heading"
+                app:layout_constraintBottom_toTopOf="@+id/available_policies_lbl"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/my_policies_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/available_policies_lbl"
+                app:layout_constraintTop_toBottomOf="@id/label_heading">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/available_policies_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="10dp"
+                android:text="Available Policies"
+
+                android:textSize="24sp"
+                app:fontFamily="@font/aclonica"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/my_policies_list"
+                android:layout_marginStart="20dp" />
+
+            <TextView
+                android:id="@+id/no_available_policies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="20sp"
+                android:text="No policies available"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/available_policies_lbl"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/available_policies_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/available_policies_lbl">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        app:itemBackground="@color/purple_500"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation"
 
         />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_policies_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_heading">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/available_policies_lbl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-
-            android:layout_marginTop="10dp"
-            android:text="Available Policies"
-
-            android:textSize="24sp"
-            app:fontFamily="@font/aclonica"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_policies_list" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/available_policies_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/available_policies_lbl">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</RelativeLayout>

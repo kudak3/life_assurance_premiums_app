@@ -7,20 +7,29 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class InsuranceClaim implements Serializable {
-    private Long id;
+    private ClaimKey id;
     private Date date;
     private Client client;
 
     private Policy policy;
     private String description;
+    private Long amount;
 
     private ClaimStatus claimStatus;
 
-    public Long getId() {
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
+    public ClaimKey getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ClaimKey id) {
         this.id = id;
     }
 

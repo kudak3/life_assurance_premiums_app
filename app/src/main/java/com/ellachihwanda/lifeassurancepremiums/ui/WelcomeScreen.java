@@ -14,6 +14,7 @@ import com.ellachihwanda.lifeassurancepremiums.ui.auth.SignUp;
 
 public class WelcomeScreen extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +32,10 @@ public class WelcomeScreen extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(WelcomeScreen.this, pairs);
             startActivity(intent, options.toBundle());
+
         } else {
             startActivity(intent);
+
         }
     }
 
@@ -49,8 +52,10 @@ public class WelcomeScreen extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(WelcomeScreen.this, pairs);
             startActivity(intent, options.toBundle());
+
         } else {
             startActivity(intent);
+
         }
 
 

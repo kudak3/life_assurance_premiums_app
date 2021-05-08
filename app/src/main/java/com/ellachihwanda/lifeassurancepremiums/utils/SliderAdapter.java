@@ -60,7 +60,7 @@ public class SliderAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slides_layout,container,false);
 
-        //Hooks
+        //Hooks linking with xml
         ImageView imageView = view.findViewById(R.id.slider_image);
         TextView heading = view.findViewById(R.id.slider_heading);
         TextView desc = view.findViewById(R.id.slider_desc);
@@ -68,6 +68,7 @@ public class SliderAdapter extends PagerAdapter {
         imageView.setImageResource(images[position]);
         heading.setText(headings[position]);
         desc.setText(descriptions[position]);
+
 
         container.addView(view);
 

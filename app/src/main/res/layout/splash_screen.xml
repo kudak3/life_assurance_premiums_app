@@ -15,11 +15,11 @@
         android:layout_height="match_parent"
 
 
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/image_description"
         android:src="@drawable/lap_logo"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="29dp" />
 
     <TextView
         android:id="@+id/powered_by_line"
@@ -30,13 +30,17 @@
         android:layout_marginEnd="111dp"
 
 
+
+
         android:layout_marginRight="111dp"
 
         android:layout_marginBottom="8dp"
 
+
         android:fontFamily="@font/brandon_grotesque_bold_italic"
 
         android:text="@string/powered_by"
+
 
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,6 +49,8 @@
         app:layout_constraintStart_toStartOf="@id/background_image"
         app:layout_constraintTop_toTopOf="@+id/background_image"
         app:layout_constraintVertical_bias="0.865" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp"
-      >
+    android:padding="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -12,77 +12,198 @@
         android:layout_marginHorizontal="20dp"
 
         android:layout_weight="1"
-        cardBackgroundColor="@color/cardview_shadow_end_color"
-        cardElevation="5dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+
 
         >
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvClaimStatus"
-                android:layout_width="10dp"
+            <LinearLayout
+                android:id="@+id/p_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="30dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="0dp"
 
-
-                android:layout_weight="1"
-                android:text="Payment"
-                android:textSize="18sp"
-                android:fontFamily="@font/baloo" />
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/policy_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent"
                 android:gravity="center_horizontal">
 
                 <TextView
-                    android:id="@+id/tvClaimPolicy"
+                     android:id="@+id/tvClaimDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-
-                    android:layout_marginTop="20dp"
-                    android:text="History"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/brandon_grotesque_black" />
-
-                <TextView
-                    android:id="@+id/tvDescription"
-                    android:layout_below="@id/tvClaimPolicy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-    android:text="$1 200 000"
-
-
-                    android:textSize="15sp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="3"
                     android:fontFamily="@font/baloo"
-                    />
 
+                    android:gravity="center_horizontal"
+                    android:text="20/01/2003"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="20dp" />
+                <TextView
+                    android:id="@+id/tvClaimStatus"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:background="#DCDCDC"
 
-            </RelativeLayout>
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/baloo"
+                     android:textColor="@color/purple_500"
 
-            <TextView
-                android:id="@+id/tvClaimDate"
-                android:layout_width="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="status"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/policy_details"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_marginVertical="30dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
 
-                android:text="12/12/2021"
+                app:layout_constraintTop_toBottomOf="@id/p_name">
 
-                android:textSize="20sp"
-                android:fontFamily="@font/ds_digital_bold" />
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+
+
+                        android:textAlignment="center">
+
+                        <TextView
+                             android:id="@+id/tvCLabelPremium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/brandon_grotesque_black"
+                            android:text="Policy"
+                            android:textSize="15sp" />
+
+                        <TextView
+
+                            android:id="@+id/tvClaimPolicy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvCLabelPremium"
+
+                            android:fontFamily="@font/brandon_grotesque_black"
+
+
+                            android:text="Name of policy"
+                            android:textSize="20sp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:textAlignment="center">
+
+                        <TextView
+                             android:id="@+id/tvCLabelCoverageAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/brandon_grotesque_black"
+                            android:text="Coverage Amount"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tvClaimAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvCLabelCoverageAmount"
+
+                            android:fontFamily="@font/ds_digital_bold"
+
+                            android:text="$1 200 000"
+                            android:textColor="@color/purple_500"
+                            android:textSize="20sp" />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center">
+
+                    <TextView
+
+                        android:id="@+id/tvClaimDescriptionLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#DCDCDC"
+                        android:fontFamily="@font/brandon_grotesque_black"
+                        android:text="Description"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toTopOf="@id/tvClaimDescription"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+
+                         android:id="@+id/tvClaimDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvClaimDescriptionLabel"
+
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/brandon_grotesque_bold_italic"
+
+                        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperi"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvClaimDescriptionLabel" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

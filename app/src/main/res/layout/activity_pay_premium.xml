@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DashBoard">
+     tools:context=".ui.PayPremium"
+    >
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -248,65 +254,18 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:background="@color/white"
-                        android:text="Choose a payment method"
+                        android:text="Account Details"
                         android:textSize="24sp"
                         app:fontFamily="@font/aclonica" />
 
-                    <RadioGroup
-                        android:id="@+id/radio_group_pmts"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/choose_payment_method"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
 
-
-                        <RadioButton
-                            android:id="@+id/ecocash"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/aclonica"
-                            android:text="Ecocash"
-                            android:textSize="12sp" />
-
-
-                        <RadioButton
-                            android:id="@+id/oneymoney"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:fontFamily="@font/aclonica"
-
-                            android:text="OneMoney"
-                            android:textSize="12sp" />
-
-
-                        <RadioButton
-                            android:id="@+id/telecash"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:fontFamily="@font/aclonica"
-
-                            android:text="Telecash"
-                            android:textSize="12sp" />
-
-                        <RadioButton
-                            android:id="@+id/zipit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:fontFamily="@font/aclonica"
-
-                            android:text="Zipit"
-                            android:textSize="12sp" />
-                    </RadioGroup>
 
                     <Spinner
                         android:id="@+id/spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/choose_payment_method"/>
 
                     <com.google.android.material.textfield.TextInputLayout
 
@@ -314,7 +273,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/radio_group_pmts"
+                        android:layout_below="@id/spinner"
 
                         android:layout_marginHorizontal="10dp"
                         android:hint="Account Number"
@@ -379,11 +338,25 @@
 
 
             android:elevation="2dp"
-            android:onClick="callDashBoard"
+            android:onClick="payPremium"
             android:text="Complete Payment"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/linearLayout2"
-            tools:ignore="OnClick" />
+             />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottom_navigation"
+            app:itemBackground="@color/purple_500"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"
+             android:layout_marginTop="10dp"
+            app:menu="@menu/menu_navigation"
+            android:layout_alignParentBottom="true"
+
+            />
+</RelativeLayout>

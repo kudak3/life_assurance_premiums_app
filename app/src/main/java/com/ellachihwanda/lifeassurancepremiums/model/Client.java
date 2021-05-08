@@ -16,6 +16,8 @@ public class Client implements Serializable {
     private String phoneNumber;
     private String email;
     private String idNumber;
+    private String homeAddress;
+    private String deviceToken;
 
 
 
@@ -40,6 +42,9 @@ public class Client implements Serializable {
         this.newEntry = newEntry;
     }
 
+    public Client() {
+    }
+
     public Client(User user, Date dateOfBirth, Gender gender) {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
@@ -47,6 +52,14 @@ public class Client implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
          this.user = user;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 
     public Long getId() {
@@ -151,6 +164,14 @@ public class Client implements Serializable {
 
     public void setPolicyCoverageList(List<PolicyCoverage> policyCoverageList) {
         this.policyCoverageList = policyCoverageList;
+    }
+
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
     @Override

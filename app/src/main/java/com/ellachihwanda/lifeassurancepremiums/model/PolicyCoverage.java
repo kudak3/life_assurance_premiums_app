@@ -27,6 +27,10 @@ public class PolicyCoverage implements Serializable {
         this.policy = policy;
     }
 
+    public PolicyCoverage() {
+
+    }
+
     public String getPolicyNumber() {
         return policyNumber;
     }
@@ -77,13 +81,6 @@ public class PolicyCoverage implements Serializable {
 
     @Override
     public String toString() {
-        return "PolicyCoverage{" +
-                "id=" + id +
-                ", policyNumber='" + policyNumber + '\'' +
-                ", client=" + client +
-                ", policy=" + policy +
-                ", date=" + date +
-                ", status=" + status +
-                '}';
+        return policy.getName() + " " + policyNumber;
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ellachihwanda.lifeassurancepremiums.R;
 import com.ellachihwanda.lifeassurancepremiums.model.Payment;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.ViewHolder> {
@@ -38,10 +39,12 @@ public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Payment payment = payments.get(0);
-        holder.tvLeading.setText(payment.getDescription());
-        holder.tvDate.setText(payment.getDate().toString());
-        holder.tvAmount.setText(payment.getAmount().toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        Payment payment = payments.get(position);
+        holder.tvPaymentType.setText(payment.getPaymentType().getName());
+        holder.tvDate.setText(sdf.format(payment.getDate()));
+        holder.tvAmount.setText('$'+payment.getAmount().toString());
+        holder.tvDescription.setText(payment.getDescription());
 
     }
 
@@ -52,13 +55,16 @@ public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvLeading,tvDate,tvAmount;
+        TextView tvPaymentType,tvDate,tvAmount,tvDescription,tvAccountNumber;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvLeading = itemView.findViewById(R.id.tvLeading);
-            tvDate = itemView.findViewById(R.id.tvDate);
-            tvAmount = itemView.findViewById(R.id.tvAmount);
+            tvPaymentType = itemView.findViewById(R.id.tvPaymentType);
+            tvDate = itemView.findViewById(R.id.tvTransactionDate);
+            tvAmount = itemView.findViewById(R.id.tvPayment);
+            tvDescription = itemView.findViewById(R.id.tvPaymentDescription);
+            tvAccountNumber = itemView.findViewById(R.id.tvAccountNumber);
+
         }
     }
 }

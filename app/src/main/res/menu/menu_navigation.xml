@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        />
+      <item
+        android:id="@+id/my_policies"
+        android:title="My Policies"
+        android:icon="@drawable/claim_desc_icon"
+        />
+     <item
+        android:id="@+id/pay_policy"
+        android:title="Pay Policy"
+        android:icon="@drawable/ic_pay_premiun"
+        />
+     <item
+        android:id="@+id/history"
+        android:title="History"
+        android:icon="@drawable/ic_histroy"
+        />
+     <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/username_icon"
+        />
+</menu>

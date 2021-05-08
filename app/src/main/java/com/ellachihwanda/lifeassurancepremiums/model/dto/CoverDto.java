@@ -1,4 +1,7 @@
-package com.ellachihwanda.lifeassurancepremiums.model;
+package com.ellachihwanda.lifeassurancepremiums.model.dto;
+
+import com.ellachihwanda.lifeassurancepremiums.model.Client;
+import com.ellachihwanda.lifeassurancepremiums.model.Policy;
 
 public class CoverDto {
     Client client;

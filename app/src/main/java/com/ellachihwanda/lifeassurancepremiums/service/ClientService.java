@@ -1,9 +1,9 @@
 package com.ellachihwanda.lifeassurancepremiums.service;
 
 import com.ellachihwanda.lifeassurancepremiums.model.Client;
+import com.ellachihwanda.lifeassurancepremiums.model.InsuranceClaim;
+import com.ellachihwanda.lifeassurancepremiums.model.Payment;
 import com.ellachihwanda.lifeassurancepremiums.model.PolicyCoverage;
-import com.ellachihwanda.lifeassurancepremiums.model.User;
-import com.ellachihwanda.lifeassurancepremiums.model.UserDto;
 
 import java.util.List;
 
@@ -30,4 +30,10 @@ public interface ClientService {
 
     @GET("clients/{id}/coverages")
     Call<List<PolicyCoverage>> getClientCovers(@Path("id")Long id);
+
+      @GET("clients/{clientId}/payments")
+    Call<List<Payment>> getPaymentsHistory(@Path("clientId")Long clientId);
+
+       @GET("clients/{clientId}/claims")
+    Call<List<InsuranceClaim>> getClaimHistory(@Path("clientId")Long clientId);
 }

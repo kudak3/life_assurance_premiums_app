@@ -24,6 +24,13 @@ public class Policy implements Serializable {
 
     private List<InsuranceClaim> claims = new ArrayList<>();
 
+    public Policy() {
+    }
+
+    public Policy(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

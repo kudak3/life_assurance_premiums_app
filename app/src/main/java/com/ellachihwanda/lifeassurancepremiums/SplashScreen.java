@@ -26,6 +26,7 @@ public class SplashScreen extends AppCompatActivity {
     //animations
     Animation sideAnim, bottomAnim;
 
+
    SharedPreferences onBoardingScreen;
 
     @Override
@@ -34,7 +35,7 @@ public class SplashScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_screen);
 
-        //hooks :hook java code to xml
+        //hooks :link /binding java code to xml
         backgroundImage = findViewById(R.id.background_image);
         poweredByLine = findViewById(R.id.powered_by_line);
 

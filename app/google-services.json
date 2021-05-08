@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "171303785555",
+    "project_id": "life-assurance-mobile-app",
+    "storage_bucket": "life-assurance-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171303785555:android:bc526da0a1d879178262a6",
+        "android_client_info": {
+          "package_name": "com.ellachihwanda.lifeassurancepremiums"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171303785555-q42kqjnf1sdcm5c8ms2jl80filk46ght.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQCnymROXsZafvb1LxV6qEzZR7d9DSVB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171303785555-q42kqjnf1sdcm5c8ms2jl80filk46ght.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

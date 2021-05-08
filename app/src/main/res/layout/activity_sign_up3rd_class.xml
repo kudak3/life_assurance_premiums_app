@@ -121,7 +121,7 @@
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
-                    app:startIconDrawable="@drawable/phone_number_icon"
+                    app:startIconDrawable="@drawable/account_num"
                     app:startIconTint="@color/black">
 
 
@@ -130,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/muli_semibold"
-                        android:inputType="phone"
+                        android:inputType="text"
                         android:textColor="@color/black"
                         android:textCursorDrawable="@null" />
 

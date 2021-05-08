@@ -1,11 +1,12 @@
 package com.ellachihwanda.lifeassurancepremiums.ui.auth;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,21 +19,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ellachihwanda.lifeassurancepremiums.R;
-import com.ellachihwanda.lifeassurancepremiums.controller.ApiClient;
 import com.ellachihwanda.lifeassurancepremiums.model.Client;
 import com.ellachihwanda.lifeassurancepremiums.model.User;
-import com.ellachihwanda.lifeassurancepremiums.model.UserDto;
 import com.ellachihwanda.lifeassurancepremiums.model.enums.Gender;
-import com.ellachihwanda.lifeassurancepremiums.service.ClientService;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SignUp2ndClass extends AppCompatActivity {
     private ProgressDialog progressDialog;
@@ -43,7 +35,7 @@ public class SignUp2ndClass extends AppCompatActivity {
     Button next, login;
     TextView titleText, slideText;
     RadioGroup radioGroup;
-    RadioButton selectedGender;
+    RadioButton selectedGender,lastRadioBtn;
     DatePicker datePicker;
     public User user;
 
@@ -60,6 +52,7 @@ public class SignUp2ndClass extends AppCompatActivity {
 
         user = (User) getIntent().getSerializableExtra("user");
 
+
         //Hooks
         backBtn = findViewById(R.id.signup_back_button);
         next = findViewById(R.id.signup_next_button);
@@ -67,21 +60,22 @@ public class SignUp2ndClass extends AppCompatActivity {
         titleText = findViewById(R.id.signup_title_text);
         slideText = findViewById(R.id.signup_slide_text);
         radioGroup = findViewById(R.id.radio_group);
+        lastRadioBtn =findViewById(R.id.others);
         datePicker = findViewById(R.id.age_picker);
-
 
 
     }
 
     public void next(View view) {
- int selectedId = radioGroup.getCheckedRadioButtonId();
+
+        int selectedId = radioGroup.getCheckedRadioButtonId();
         selectedGender = findViewById(selectedId);
 
         next.setEnabled(false);
         String gender = selectedGender.getText().toString();
         Date dateOfBirth = getDateFromDatePicker(datePicker);
 
-        Client client = new Client(user ,dateOfBirth, Gender.valueOf(gender.toUpperCase()));
+        Client client = new Client(user, dateOfBirth, Gender.valueOf(gender.toUpperCase()));
 
 
         Intent intent = new Intent(getApplicationContext(), SignUp3rdClass.class);
@@ -120,15 +114,6 @@ public class SignUp2ndClass extends AppCompatActivity {
         return calendar.getTime();
     }
 
-    private void showDialog() {
-        if (!progressDialog.isShowing())
-            progressDialog.show();
-    }
-
-    private void hideDialog() {
-        if (progressDialog.isShowing())
-            progressDialog.dismiss();
-    }
 
 
 }

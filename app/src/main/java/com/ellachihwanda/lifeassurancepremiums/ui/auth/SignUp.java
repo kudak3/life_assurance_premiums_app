@@ -1,5 +1,6 @@
 package com.ellachihwanda.lifeassurancepremiums.ui.auth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
@@ -20,8 +21,11 @@ import android.widget.Toast;
 import com.ellachihwanda.lifeassurancepremiums.R;
 import com.ellachihwanda.lifeassurancepremiums.controller.ApiClient;
 import com.ellachihwanda.lifeassurancepremiums.model.User;
-import com.ellachihwanda.lifeassurancepremiums.model.UserDto;
+import com.ellachihwanda.lifeassurancepremiums.model.dto.UserDto;
 import com.ellachihwanda.lifeassurancepremiums.service.UserService;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,11 +34,13 @@ import retrofit2.Response;
 public class SignUp extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
+
     //Variables
     ImageView backBtn;
     Button next, login;
     TextView titleText, slideText;
     EditText etFirstName, etLastName, etEmail, etPassword;
+    String token;
 
 
     @Override
@@ -44,6 +50,7 @@ public class SignUp extends AppCompatActivity {
         progressDialog = new ProgressDialog(this, ProgressDialog.THEME_HOLO_LIGHT);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
+        getFirebaseToken();
 
         setContentView(R.layout.activity_sign_up);
 
@@ -54,7 +61,7 @@ public class SignUp extends AppCompatActivity {
         titleText = findViewById(R.id.signup_title_text);
         slideText = findViewById(R.id.signup_slide_text);
 
-        //user details
+        //user details linking xml
         etFirstName = findViewById(R.id.signup_fname);
         etLastName = findViewById(R.id.signup_lname);
         etEmail = findViewById(R.id.signup_email);
@@ -81,22 +88,25 @@ public class SignUp extends AppCompatActivity {
         String password = etPassword.getText().toString();
 
 
-        if (firstName.isEmpty()) {
-            etFirstName.setError("enter a valid firstName");
+        if (firstName.isEmpty() || !firstName.matches("^[a-zA-Z]*$")) {
+            etFirstName.setError("Enter a valid first name");
             valid = false;
         } else {
             etFirstName.setError(null);
         }
 
-        if (lastName.isEmpty()) {
-            etLastName.setError("enter a valid lastName");
+
+
+        if (lastName.isEmpty() || !lastName.matches("^[a-zA-Z]*$")) {
+            etLastName.setError("Enter a valid lastName");
             valid = false;
         } else {
             etLastName.setError(null);
         }
 
+
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            etEmail.setError("enter a valid email");
+            etEmail.setError("Enter a valid email");
             valid = false;
         } else {
             etEmail.setError(null);
@@ -108,6 +118,7 @@ public class SignUp extends AppCompatActivity {
         } else {
             etPassword.setError(null);
         }
+
 
         return valid;
     }
@@ -122,6 +133,27 @@ public class SignUp extends AppCompatActivity {
             progressDialog.dismiss();
     }
 
+    private void getFirebaseToken() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TOKEN", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        token = task.getResult();
+
+
+
+                    }
+                });
+
+
+    }
+
     public void next() {
         progressDialog.setMessage("Creating user...");
         showDialog();
@@ -132,7 +164,7 @@ public class SignUp extends AppCompatActivity {
         String password = etPassword.getText().toString();
 
 
-        UserDto userDto = new UserDto( firstName, lastName, email,password, (long) 1);
+        UserDto userDto = new UserDto(firstName, lastName, email, password, (long) 1, token);
 
         UserService userService = ApiClient.createService(UserService.class);
         Call<User> call = userService.registerUser(userDto);
@@ -147,6 +179,7 @@ public class SignUp extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), SignUp2ndClass.class);
                     intent.putExtra("user", response.body());
+
 
                     //Add Shared Animation
                     Pair[] pairs = new Pair[5];
@@ -190,7 +223,7 @@ public class SignUp extends AppCompatActivity {
                     etEmail.getText().clear();
                     etPassword.getText().clear();
                     etLastName.getText().clear();
-                ;
+                    ;
 
                 }
                 next.setEnabled(true);
@@ -201,7 +234,7 @@ public class SignUp extends AppCompatActivity {
                 hideDialog();
                 System.out.println("===" + t.getMessage());
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                    next.setEnabled(true);
+                next.setEnabled(true);
 
             }
         });

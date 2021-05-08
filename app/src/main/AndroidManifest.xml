@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ellachihwanda.lifeassurancepremiums">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeAssurancePremiums"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.PoliciesScreen"></activity>
+        <activity android:name=".ui.InsuranceClaimScreen" />
+        <activity android:name=".ui.PoliciesScreen" />
         <activity android:name=".ui.HistoryScreen" />
-        <activity android:name=".ui.UserProfile" />
-        <activity android:name=".ui.PayPremium" />
+        <activity android:name=".ui.UserProfile" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.PayPremium" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.DashBoard" />
         <activity android:name=".ui.auth.SignUp3rdClass" />
         <activity android:name=".ui.auth.SignUp2ndClass" />
@@ -33,7 +35,14 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts" /> <!-- [START firebase_service] -->
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

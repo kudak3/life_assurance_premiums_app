@@ -1,4 +1,4 @@
-package com.ellachihwanda.lifeassurancepremiums.model;
+package com.ellachihwanda.lifeassurancepremiums.model.dto;
 
 
 
@@ -8,19 +8,29 @@ public class UserDto {
     private String email;
     private String password;
     private Long role;
+    private String deviceToken;
 
 
     public UserDto(){
 
     }
 
-    public UserDto(String firstName, String lastName, String email, String password,Long role) {
+    public UserDto(String firstName, String lastName, String email, String password,Long role,String deviceToken) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.deviceToken = deviceToken;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 
     public String getFirstName() {

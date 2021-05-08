@@ -1,6 +1,6 @@
 package com.ellachihwanda.lifeassurancepremiums.service;
 
-import com.ellachihwanda.lifeassurancepremiums.model.CoverDto;
+import com.ellachihwanda.lifeassurancepremiums.model.dto.CoverDto;
 import com.ellachihwanda.lifeassurancepremiums.model.Policy;
 import com.ellachihwanda.lifeassurancepremiums.model.PolicyCoverage;
 

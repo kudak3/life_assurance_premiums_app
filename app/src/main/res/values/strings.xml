@@ -2,7 +2,7 @@
     <string name="app_name">Life Assurance Premiums</string>
     <string name="logo_name">Life Assurance Premiums</string>
     <string name="slogan_name"> A few pennies today could save your life tomorrow</string>
-    <string name="powered_by">Powered by Ellen Chihwanda</string>
+    <string name="powered_by">Developed by Ellen Chihwanda</string>
     <string name="image_description">Logo image</string>
 
     <!--    Strings for onBoarding Screen -->
@@ -20,7 +20,7 @@
     <!--Buttons-->
     <string name="skip_btn">Skip</string>
     <string name="next_btn">Next</string>
-     <string name="submit">Submit</string>
+    <string name="submit">Submit</string>
     <string name="let_get_started">Lets Get Started</string>
 
 
@@ -36,9 +36,11 @@
     <string name="enter_email">Email Address</string>
     <string name="enter_phone">Phone Number</string>
     <string name="id_number">ID Number</string>
-    <string name="policy_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,.</string>
+    <string name="policy_description">Lorem ipsum dolor sit amet, consectetur,.</string>
     <string name="last_name">Last Name</string>
     <string name="join"><u>Join</u></string>
     <string name="pay">Pay</string>
+    <string name="ecocash">Ecocash</string>
+    <string name="make_a_claim">Make a claim</string>
 
 </resources>
