@@ -53,6 +53,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:fontFamily="@font/baloo"
+                android:textColor="@color/design_default_color_primary"
 
                 android:text="Ella Chihwada"
 
