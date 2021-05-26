@@ -16,11 +16,12 @@ public class Payment implements Serializable {
     public Payment() {
     }
 
-    public Payment(Client client, String accountNumber, PaymentType paymentType, Long amount) {
+    public Payment(Client client, String accountNumber, PaymentType paymentType, Long amount, String description) {
         this.client = client;
         this.accountNumber = accountNumber;
         this.paymentType = paymentType;
         this.amount = amount;
+        this.description = description;
 
     }
 
