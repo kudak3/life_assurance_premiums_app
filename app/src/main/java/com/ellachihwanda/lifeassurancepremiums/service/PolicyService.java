@@ -17,7 +17,7 @@ public interface PolicyService {
     Call<List<Policy>> getPolicies();
 
     @POST("policies")
-    Call<PolicyCoverage> joinPolicy(@Body CoverDto coverDto);
+    Call<List<PolicyCoverage>> joinPolicy(@Body CoverDto coverDto);
 
     @GET("policies/{userId}")
     Call<List<PolicyCoverage>> getPolicyCovers(@Path("userId")Long id);

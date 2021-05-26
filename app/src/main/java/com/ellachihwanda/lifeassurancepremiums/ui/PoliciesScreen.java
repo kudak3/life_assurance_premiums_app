@@ -33,8 +33,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -44,9 +47,11 @@ import retrofit2.Response;
 public class PoliciesScreen extends AppCompatActivity {
     public static ProgressDialog progressDialog;
     public static Client client;
+    private PolicyCoverage currentCoverage;
     private RecyclerView rVMyPoliciesList, rvAvailablePolicies;
-    private TextView txtHello, txtNoCovers, txtNoPolicies , txtAvailableHeading;
+    private TextView txtHello, txtNoCovers, txtNoPolicies, txtAvailableHeading;
     PoliciesAdapter policiesAdapter;
+    List<PolicyCoverage> coverageList;
     List<PolicyCoverage> myPolicyList = new ArrayList<>();
     SharedPreferences sharedPreferences;
     public static final String MyPREFERENCES = "MyPrefs";
@@ -119,15 +124,28 @@ public class PoliciesScreen extends AppCompatActivity {
         txtHello = findViewById(R.id.hello_text);
 
 
-
         initPolicies();
 
 
     }
 
     public void initPolicies() {
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+        String salutation = "HI";
 
-        String helloText = "Hello , " + client.getFirstName().toUpperCase() + " " + client.getLastName();
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            salutation = "Good Morning";
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
+            salutation = "Good Afternoon";
+        } else if (timeOfDay >= 16 && timeOfDay < 21) {
+            salutation = "Good Evening";
+        } else if (timeOfDay >= 21 && timeOfDay < 24) {
+            salutation = "Good Night";
+        }
+
+
+        String helloText = salutation + " , " + client.getFirstName().toUpperCase() + " " + client.getLastName();
         txtHello.setText(helloText);
 
         progressDialog.setMessage("Loading Policies...");
@@ -147,10 +165,7 @@ public class PoliciesScreen extends AppCompatActivity {
             hideDialog();
             return;
         }
-
-        CoverageAdapter coverageAdapter = new CoverageAdapter(this, myPolicyList);
-        rVMyPoliciesList.setAdapter(coverageAdapter);
-        rVMyPoliciesList.setLayoutManager(new LinearLayoutManager(PoliciesScreen.this));
+        getCurrentCover();
 
 
     }
@@ -160,7 +175,7 @@ public class PoliciesScreen extends AppCompatActivity {
         Call<List<Policy>> call = policyService.getPolicies();
         call.enqueue(new Callback<List<Policy>>() {
             @Override
-            public void onResponse(Call<List<Policy>> call, Response<List<Policy>> response) {
+            public void onResponse(@NotNull Call<List<Policy>> call, @NotNull Response<List<Policy>> response) {
                 if (response.isSuccessful()) {
                     List<Policy> availablePolicies = response.body();
 
@@ -180,7 +195,7 @@ public class PoliciesScreen extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Policy>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<Policy>> call, @NotNull Throwable t) {
                 System.out.println(t.getMessage());
                 Toast.makeText(PoliciesScreen.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 hideDialog();
@@ -198,5 +213,64 @@ public class PoliciesScreen extends AppCompatActivity {
     public static void hideDialog() {
         if (progressDialog.isShowing())
             progressDialog.dismiss();
+    }
+
+    private void getCurrentCover() {
+
+        String userJson = sharedPreferences.getString("user", "");
+        Gson gson = new Gson();
+        User user = gson.fromJson(userJson, User.class);
+        PolicyService policyService = ApiClient.createService(PolicyService.class);
+        Call<List<PolicyCoverage>> call = policyService.getPolicyCovers(user.getId());
+        call.enqueue(new Callback<List<PolicyCoverage>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<PolicyCoverage>> call, @NotNull Response<List<PolicyCoverage>> response) {
+                hideDialog();
+                coverageList = response.body();
+                System.out.println("######----" + response.code());
+
+
+                if (response.isSuccessful()) {
+                    client = coverageList.get(0).getClient();
+                    System.out.println("--" + client);
+
+                    //storing our values in preferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    Gson gson = new Gson();
+                    editor.putString("client", gson.toJson(client));
+                    editor.apply();
+
+                    if (coverageList.size() != 0) {
+
+                        currentCoverage = coverageList.get(0);
+
+                        editor.putString("cover", gson.toJson(currentCoverage));
+                        editor.putString("coverList", gson.toJson(coverageList));
+                        editor.apply();
+
+                        CoverageAdapter coverageAdapter = new CoverageAdapter(getApplicationContext(), myPolicyList);
+                        rVMyPoliciesList.setAdapter(coverageAdapter);
+                        rVMyPoliciesList.setLayoutManager(new LinearLayoutManager(PoliciesScreen.this));
+
+
+                    }
+
+
+                } else {
+                    // error response, no access to resource?
+                    Toast.makeText(getApplicationContext(), response.code() + " Failed to load client details", Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<List<PolicyCoverage>> call, @NotNull Throwable t) {
+
+                hideDialog();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
     }
 }

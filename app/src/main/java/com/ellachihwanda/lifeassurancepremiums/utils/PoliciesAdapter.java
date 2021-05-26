@@ -68,17 +68,20 @@ public class PoliciesAdapter extends RecyclerView.Adapter<PoliciesAdapter.ViewHo
             showDialog();
             CoverDto cover = new CoverDto(PoliciesScreen.client, policies.get(position));
             PolicyService policyService = ApiClient.createService(PolicyService.class);
-            Call<PolicyCoverage> call = policyService.joinPolicy(cover);
-            call.enqueue(new Callback<PolicyCoverage>() {
+            Call<List<PolicyCoverage>> call = policyService.joinPolicy(cover);
+            call.enqueue(new Callback<List<PolicyCoverage>>() {
                 @Override
-                public void onResponse(Call<PolicyCoverage> call, Response<PolicyCoverage> response) {
+                public void onResponse(Call<List<PolicyCoverage>> call, Response<List<PolicyCoverage>> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(context, "Successfully joined the policy", Toast.LENGTH_LONG).show();
+                        List<PolicyCoverage> list = response.body();
+                        System.out.println("=================");
+                        System.out.println(list);
 
                         sharedPreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         Gson gson = new Gson();
-                        editor.putString("coverList", gson.toJson(Arrays.asList(response.body())));
+                        editor.putString("coverList", gson.toJson(list));
                         editor.apply();
 
                         Intent intent = new Intent(context, PoliciesScreen.class);
@@ -95,7 +98,7 @@ public class PoliciesAdapter extends RecyclerView.Adapter<PoliciesAdapter.ViewHo
                 }
 
                 @Override
-                public void onFailure(Call<PolicyCoverage> call, Throwable t) {
+                public void onFailure(Call<List<PolicyCoverage>> call, Throwable t) {
 
                     Toast.makeText(holder.btnJoinPolicy.getContext(), "An error has occured: " + t.getMessage(), Toast.LENGTH_LONG).show();
                     hideDialog();
@@ -117,11 +120,11 @@ public class PoliciesAdapter extends RecyclerView.Adapter<PoliciesAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvName = (TextView) itemView.findViewById(R.id.tvName);
-            tvPremium = (TextView) itemView.findViewById(R.id.tvPremium);
-            tvCoverAmount = (TextView) itemView.findViewById(R.id.tvCoverageAmount);
-            tvDescription = (TextView) itemView.findViewById(R.id.tvPolicyDescription);
-            btnJoinPolicy = (TextView) itemView.findViewById(R.id.btnJoin);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvPremium = itemView.findViewById(R.id.tvPremium);
+            tvCoverAmount = itemView.findViewById(R.id.tvCoverageAmount);
+            tvDescription = itemView.findViewById(R.id.tvPolicyDescription);
+            btnJoinPolicy = itemView.findViewById(R.id.btnJoin);
 
         }
     }

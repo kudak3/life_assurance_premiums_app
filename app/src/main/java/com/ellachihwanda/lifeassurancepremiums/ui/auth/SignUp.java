@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -26,6 +27,7 @@ import com.ellachihwanda.lifeassurancepremiums.service.UserService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +35,7 @@ import retrofit2.Response;
 
 public class SignUp extends AppCompatActivity {
     private ProgressDialog progressDialog;
+    SharedPreferences sharedPreferences;
 
 
     //Variables
@@ -41,6 +44,7 @@ public class SignUp extends AppCompatActivity {
     TextView titleText, slideText;
     EditText etFirstName, etLastName, etEmail, etPassword;
     String token;
+    public static final String MyPREFERENCES = "MyPrefs";
 
 
     @Override
@@ -51,6 +55,9 @@ public class SignUp extends AppCompatActivity {
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
         getFirebaseToken();
+
+         //get values from preferences
+        sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 
         setContentView(R.layout.activity_sign_up);
 
@@ -135,20 +142,17 @@ public class SignUp extends AppCompatActivity {
 
     private void getFirebaseToken() {
         FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w("TOKEN", "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
-
-                        // Get new FCM registration token
-                        token = task.getResult();
-
-
-
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w("TOKEN", "Fetching FCM registration token failed", task.getException());
+                        return;
                     }
+
+                    // Get new FCM registration token
+                    token = task.getResult();
+
+
+
                 });
 
 
@@ -176,9 +180,15 @@ public class SignUp extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     // user object available
+                    User user = response.body();
+                      //storing our values in preferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    Gson gson = new Gson();
+                    editor.putString("user", gson.toJson(user));
+                    editor.apply();
 
                     Intent intent = new Intent(getApplicationContext(), SignUp2ndClass.class);
-                    intent.putExtra("user", response.body());
+                    intent.putExtra("user", user);
 
 
                     //Add Shared Animation
