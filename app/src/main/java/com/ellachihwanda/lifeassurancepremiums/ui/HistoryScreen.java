@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ import com.ellachihwanda.lifeassurancepremiums.utils.PaymentsAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -41,7 +43,7 @@ public class HistoryScreen extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private Client client = new Client();
     SharedPreferences sharedPreferences;
-    TextView txtGreetings, txtPaymentsHeading, txtNoPayments, txtNoClaims;
+    TextView txtGreetings, txtPaymentsHeading, txtNoPayments, txtNoClaims, txtHelloText;
 
 
     RecyclerView recyclerView, rvClaims;
@@ -105,13 +107,29 @@ public class HistoryScreen extends AppCompatActivity {
         txtGreetings = findViewById(R.id.greetings_name);
         txtNoPayments = findViewById(R.id.no_payments);
         txtNoClaims = findViewById(R.id.no_claims);
+        txtHelloText = findViewById(R.id.hello_text);
+
         initHistory();
 
     }
 
     private void initHistory() {
         showDialog();
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+        String helloText = "HI";
 
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            helloText = "Good Morning";
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
+            helloText = "Good Afternoon";
+        } else if (timeOfDay >= 16 && timeOfDay < 21) {
+            helloText = "Good Evening";
+        } else if (timeOfDay >= 21 && timeOfDay < 24) {
+            helloText = "Good Night";
+        }
+
+        txtHelloText.setText(helloText);
         txtGreetings.setText(client.getFirstName() + " " + client.getLastName());
         getPaymentHistory();
         getClaimHistory();
@@ -124,7 +142,10 @@ public class HistoryScreen extends AppCompatActivity {
         call.enqueue(new Callback<List<InsuranceClaim>>() {
             @Override
             public void onResponse(Call<List<InsuranceClaim>> call, Response<List<InsuranceClaim>> response) {
+
                 if (response.isSuccessful()) {
+                    System.out.println("======================================claims");
+                    System.out.println(response.body());
                     List<InsuranceClaim> claims = response.body();
                     if (claims.isEmpty() || claims.size() == 0 || claims == null) {
 
@@ -139,12 +160,17 @@ public class HistoryScreen extends AppCompatActivity {
                     rvClaims.setAdapter(claimsAdapter);
                     rvClaims.setLayoutManager(new LinearLayoutManager(HistoryScreen.this));
                     hideDialog();
+                } else {
+                    System.out.println("========================failed");
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<InsuranceClaim>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                System.out.println("================================");
+                System.out.println(t.getMessage());
+                Log.d("Error", t.getMessage(), t);
                 hideDialog();
 
             }
@@ -159,15 +185,14 @@ public class HistoryScreen extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
                 if (response.isSuccessful()) {
-                      List<Payment> payments = response.body();
-                      if (payments.isEmpty() || payments.size() == 0 || payments == null) {
+                    List<Payment> payments = response.body();
+                    if (payments.isEmpty() || payments.size() == 0 || payments == null) {
 
                         txtNoPayments.setVisibility(View.VISIBLE);
                         hideDialog();
 
                         return;
                     }
-
 
 
                     PaymentsAdapter paymentsAdapter = new PaymentsAdapter(HistoryScreen.this, response.body());

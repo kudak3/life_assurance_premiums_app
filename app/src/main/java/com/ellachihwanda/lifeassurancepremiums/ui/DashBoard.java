@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -109,7 +110,22 @@ public class DashBoard extends AppCompatActivity {
     }
 
     public void initDashBoard() {
-        String helloText = "Hello , " + user.getFirstName().toUpperCase();
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+        String salutation = "HI";
+
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            salutation = "Good Morning";
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
+            salutation = "Good Afternoon";
+        } else if (timeOfDay >= 16 && timeOfDay < 21) {
+            salutation = "Good Evening";
+        } else if (timeOfDay >= 21 && timeOfDay < 24) {
+            salutation = "Good Night";
+        }
+
+
+        String helloText = salutation + " , " + user.getFirstName().toUpperCase();
         txtHello.setText(helloText);
 
         PolicyService policyService = ApiClient.createService(PolicyService.class);
@@ -125,6 +141,8 @@ public class DashBoard extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     client = coverageList.get(0).getClient();
                     System.out.println("--" + client);
+
+                    //storing our values in preferences
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     Gson gson = new Gson();
                     editor.putString("client", gson.toJson(client));
@@ -135,6 +153,7 @@ public class DashBoard extends AppCompatActivity {
                         currentCoverage = coverageList.get(0);
 
                         editor.putString("cover", gson.toJson(currentCoverage));
+                        editor.putString("coverList", gson.toJson(coverageList));
                         editor.apply();
 
                         String dueDate = sdf.format(currentCoverage.getDate());
@@ -171,7 +190,6 @@ public class DashBoard extends AppCompatActivity {
 
     public void showProfile(View view) {
         Intent intent = new Intent(this, UserProfile.class);
-        intent.putExtra("policies", coverageList.size());
         startActivity(intent);
     }
 
@@ -185,7 +203,7 @@ public class DashBoard extends AppCompatActivity {
         Gson gson = new Gson();
         Intent intent = new Intent(this, PoliciesScreen.class);
         intent.putExtra("client", client);
-        editor.putString("coverList", gson.toJson(coverageList)).apply();
+
 
         startActivity(intent);
     }
