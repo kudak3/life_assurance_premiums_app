@@ -31,6 +31,7 @@ import com.ellachihwanda.lifeassurancepremiums.model.PolicyCoverage;
 import com.ellachihwanda.lifeassurancepremiums.model.dto.CoverDto;
 import com.ellachihwanda.lifeassurancepremiums.service.PaymentService;
 import com.ellachihwanda.lifeassurancepremiums.service.PolicyService;
+import com.ellachihwanda.lifeassurancepremiums.utils.AuthDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
@@ -45,9 +46,9 @@ import retrofit2.Response;
 import static com.ellachihwanda.lifeassurancepremiums.ui.DashBoard.MyPREFERENCES;
 
 
-public class PayPremium extends AppCompatActivity {
+public class PayPremium extends AppCompatActivity implements AuthDialog.AuthDialogListener {
     private PolicyCoverage coverage;
-    EditText etAccountNumber, etPremium;
+    EditText etAccountNumber, etPremium, etDescription;
     TextView txtPolicyNumber, txtPolicyDueDate, txtPolicyName, txtPolicyDescription, txtPremium;
     Button btnCompletePayment;
     private Spinner spinner;
@@ -99,9 +100,9 @@ public class PayPremium extends AppCompatActivity {
 
 
         sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-        String clientJson = sharedPreferences.getString("cover", "");
+        String coverJson = sharedPreferences.getString("cover", "");
         Gson gson = new Gson();
-        coverage = gson.fromJson(clientJson, PolicyCoverage.class);
+        coverage = gson.fromJson(coverJson, PolicyCoverage.class);
 
 
         progressDialog = new ProgressDialog(this, ProgressDialog.THEME_HOLO_LIGHT);
@@ -111,6 +112,7 @@ public class PayPremium extends AppCompatActivity {
         //link java with xml
         etAccountNumber = findViewById(R.id.account_number);
         etPremium = findViewById(R.id.premium_amount_pay);
+        etDescription = findViewById(R.id.payment_description);
         txtPremium = findViewById(R.id.premium_amount);
         txtPolicyDescription = findViewById(R.id.policy_desc);
         txtPolicyDueDate = findViewById(R.id.due_date);
@@ -139,15 +141,26 @@ public class PayPremium extends AppCompatActivity {
 
     }
 
+
     public void payPremium(View view) {
+        AuthDialog authDialog = new AuthDialog();
+        authDialog.show(getSupportFragmentManager(), " Authentication");
+
+    }
+
+    @Override
+    public void completePayment() {
+
+
         btnCompletePayment.setEnabled(false);
+
         String accountNumber = etAccountNumber.getText().toString();
         Long amount = Long.parseLong(etPremium.getText().toString());
+        String description = etDescription.getText().toString();
 
-        Payment payment = new Payment(coverage.getClient(), accountNumber, paymentType, amount);
+        Payment payment = new Payment(coverage.getClient(), accountNumber, paymentType, amount,description);
 
 
-        System.out.println("=============== dob");
         System.out.println(payment.getClient().getDateOfBirth());
 
         PaymentService paymentService = ApiClient.createService(PaymentService.class);
@@ -180,6 +193,7 @@ public class PayPremium extends AppCompatActivity {
             }
         });
     }
+
 
     private void getMethodOfPayment() {
 
