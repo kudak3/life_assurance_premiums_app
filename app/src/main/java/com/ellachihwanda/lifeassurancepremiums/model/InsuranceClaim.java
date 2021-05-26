@@ -7,15 +7,35 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class InsuranceClaim implements Serializable {
-    private ClaimKey id;
-    private Date date;
-    private Client client;
+    private Long id;
 
-    private Policy policy;
+
+    private Date date;
+
+
+
+    private PolicyCoverage policyCoverage;
+
     private String description;
     private Long amount;
 
     private ClaimStatus claimStatus;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public PolicyCoverage getPolicyCoverage() {
+        return policyCoverage;
+    }
+
+    public void setPolicyCoverage(PolicyCoverage policyCoverage) {
+        this.policyCoverage = policyCoverage;
+    }
 
     public Long getAmount() {
         return amount;
@@ -25,13 +45,7 @@ public class InsuranceClaim implements Serializable {
         this.amount = amount;
     }
 
-    public ClaimKey getId() {
-        return id;
-    }
 
-    public void setId(ClaimKey id) {
-        this.id = id;
-    }
 
     public Date getDate() {
         return date;
@@ -41,21 +55,7 @@ public class InsuranceClaim implements Serializable {
         this.date = date;
     }
 
-    public Client getClient() {
-        return client;
-    }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Policy getPolicy() {
-        return policy;
-    }
-
-    public void setPolicy(Policy policy) {
-        this.policy = policy;
-    }
 
     public String getDescription() {
         return description;
