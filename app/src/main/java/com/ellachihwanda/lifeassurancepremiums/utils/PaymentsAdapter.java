@@ -45,6 +45,7 @@ public class PaymentsAdapter extends RecyclerView.Adapter<PaymentsAdapter.ViewHo
         holder.tvDate.setText(sdf.format(payment.getDate()));
         holder.tvAmount.setText('$'+payment.getAmount().toString());
         holder.tvDescription.setText(payment.getDescription());
+        holder.tvAccountNumber.setText(payment.getAccountNumber());
 
     }
 
