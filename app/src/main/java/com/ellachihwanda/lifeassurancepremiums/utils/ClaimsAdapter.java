@@ -42,7 +42,7 @@ public class ClaimsAdapter extends RecyclerView.Adapter<ClaimsAdapter.ViewHolder
         holder.tvDescription.setText(claim.getDescription());
         holder.tvClaimDate.setText(sdf.format(claim.getDate()));
         holder.tvClaimStatus.setText(claim.getClaimStatus().getName());
-        holder.tvClaimPolicy.setText(claim.getPolicy().getName());
+        holder.tvClaimPolicy.setText(claim.getPolicyCoverage().getPolicy().getName());
 
     }
 

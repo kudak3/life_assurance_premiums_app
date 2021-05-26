@@ -49,6 +49,7 @@ public class CoverageAdapter extends RecyclerView.Adapter<CoverageAdapter.ViewHo
         holder.btnPayPolicy.setOnClickListener((view) -> {
             Intent intent = new Intent(context, PayPremium.class);
             intent.putExtra("cover", coverage);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });
 
